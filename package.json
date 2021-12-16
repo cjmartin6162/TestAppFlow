@@ -1,0 +1,21 @@
+{
+	"name": "com.yourcompany.yourapp",
+	"displayName": "My App",
+	"version": "0.0.1",
+	"description": "An Alpha Anywhere PhoneGap App",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"ecosystem:cordova"
+	],
+	"author": "Alpha Software",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"cordova-android": "^8.1.0",
+		    "cordova-ios": "^5.1.1"
+	}
+}
+
+	
