@@ -1,6 +1,6 @@
 function _phoneGapSettings() { 
  return {
-    "appId": "com.yourCompany.yourApp",
+    "appId": "com.desertgadgets.appflowtest",
     "preferences": {
         "permissions": "none",
         "orientation": "default",
