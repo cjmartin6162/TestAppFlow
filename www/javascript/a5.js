@@ -12403,7 +12403,7 @@ A5.DialogComponentHelper.prototype = {
 			})
 		}
 	},
-
+//end of firestore object
 	chart_GenerateProgressChart: function(s,val) {
 		var html = [];
 		version = 1;
@@ -17721,7 +17721,7 @@ _persistListToFile: function(key,data,_cbSave) {
 							}
 
 							var flagControlDirty = this.getControlDirty(controls[i].toUpperCase());
-							if(flagControlDirty) {
+							if(flagControlDirty || flagNewRow) {
 								data[field] = valToUse;
 								if(sourceImageName != '') {
 									data[controls[i] + '__A5SOURCEIMAGENAME'] = sourceImageName;
@@ -17798,7 +17798,7 @@ _persistListToFile: function(key,data,_cbSave) {
 								}
 							}
 
-						if(this.getPointer(map[i].control)  && flagControlDirty) {
+						if(this.getPointer(map[i].control)  && (flagControlDirty || flagNewRow) ) {
 							data[map[i].field] = valToUse;
 							if(sourceImageName != '') {
 								data[map[i].field + '__A5SOURCEIMAGENAME'] = sourceImageName;
@@ -18620,6 +18620,19 @@ _persistListToFile: function(key,data,_cbSave) {
 			$e.execute(ele,'abstractclick');
 			ele.click();
 		}
+	},
+
+
+	controlBarButtonClick: function(cb,button) {
+		var obj = this.getControl(cb);
+		try{
+			var action = obj.items[button].actions.click;
+			if(typeof action != 'undefined') {
+				obj.actions[action].call();
+			}
+
+		}catch(e) { }
+
 	},
 
 	_orientationChangeHandler: function() {
@@ -22164,6 +22177,8 @@ getValue:  function(name) {
 	},
 
 	_summarize: function(name,rowNum){
+		alert(1);
+		//this appears to be obsolete as there is a second defintion that overwrites this one
 		var flagVarChanged = typeof arguments[2] != 'undefined' ? arguments[2] : true;
 		name = name.toUpperCase();
 		var cntrlInfoObj = this._getControlInfo(name);
@@ -22225,6 +22240,7 @@ getValue:  function(name) {
 		if(flagVarChanged) this._variablesChanged(['summary.' + name],rowNum);
 	},
 	_summarize: function(name,rowNum){
+
 		var flagVarChanged = typeof arguments[2] != 'undefined' ? arguments[2] : true;
 		name = name.toUpperCase();
 		var cntrlInfoObj = this._getControlInfo(name);
@@ -22788,402 +22804,6 @@ getValue:  function(name) {
 
 	},
 
-	ajaxCallback: function(part,rowNum,xbasicFunction) {
-
-		var flagLogTime = false;
-		if(A5 && A5.logTime) flagLogTime = A5.logTime;
-		if(flagLogTime) {
-			var d = new Date();
-			console.log('Start of canAjaxCallback function: ' + d.toString());
-		}
-
-		var callbackId = A5.UUID();
-		if(!this._executeEvent('canAjaxCallback',{xbasicFunctionName: xbasicFunction, ajaxEvent: 'AjaxCallback', callbackId: callbackId})) return false;
-		part = part.toUpperCase().substring(0,1);
-		var callbackURL = typeof arguments[3] != 'undefined' ? arguments[3] : '';
-		var otherData = typeof arguments[4] != 'undefined' ? arguments[4] : '';
-		var ops = typeof arguments[5] != 'undefined' ? arguments[5] : {};
-		var flagSaveListData = ops.flagSaveListData; //ajax callback to sync list data - do not need to submit data in HIDDENA5FN fields
-		if(typeof flagSaveListData == 'undefined') flagSaveListData = false;
-
-
-		var flagRunningLocally = false;
-
-        if(window.location.hostname=='localhost' || window.location.hostname=='127.0.0.1') flagRunningLocally = true;
-        //1/26/2021 not sure why this was turned off for localhost. seems like it should be enabled.
-        if(!flagRunningLocally || true) {
-			if(typeof this._onlineStatus != 'undefined') {
-				if(this._onlineStatus == 'offline') {
-					if(typeof ops.deviceOfflineFunction == 'function') {
-						ops.deviceOfflineFunction.apply(this);
-					}
-					this._executeEvent('onAjaxCallbackNotAvailable', {xbasicFunctionName: xbasicFunction, ajaxEvent: 'AjaxCallback', callbackId: callbackId})
-					return false;
-				}
-			}
-		}
-		var onCompleteCode = '';
-		var flagCheckifServerAvailable = false;
-		var flagDoSpeedTest = false;
-		//speed test only allowed if checkIfServerAvailable is turned on.
-		//speed test is only performed if server is available
-
-		if(typeof ops.onComplete != 'undefined') {
-			onCompleteCode = ops.onComplete;
-			var objx = this._ajaxCallbackCompleteCode;
-			objx[callbackId] = onCompleteCode;
-		}
-
-		if(typeof ops.checkifserveravailable != 'undefined') {
-				if(ops.checkifserveravailable) flagCheckifServerAvailable = true;
-			}
-
-
-		if(flagCheckifServerAvailable) {
-			if(typeof ops.performspeedtest != 'undefined') {
-				if(ops.performspeedtest) flagDoSpeedTest = true;
-			}
-		}
-
-
-
-
-
-		var flagSubmitFormData = true;
-		if(typeof ops.submitFormData != 'undefined') flagSubmitFormData = ops.submitFormData
-
-		var flagGetLocationData = false;
-		var _locationHighAccuracy = this.locationHighAccuracy;
-		var _locationTimeout = this.locationTimeout;
-		var _locationMaximumAge = this.locationMaximumAge;
-		var _ajaxCallbackTimeout = this.ajaxCallbackTimeout;
-		if(typeof ops.getLocationData != 'undefined') flagGetLocationData = ops.getLocationData;
-		if(typeof ops.enableHighAccuracy != 'undefined') _locationHighAccuracy = ops.enableHighAccuracy;
-		if(typeof ops.timeout != 'undefined') _locationTimeout = ops.timeout;
-		if(typeof ops.maximumAge != 'undefined') _locationMaximumAge = ops.maximumAge;
-		if(typeof ops.ajaxCallbackTimeout != 'undefined') _ajaxCallbackTimeout = ops.ajaxCallbackTimeout;
-		if(ops.ajaxCallbackTimeout == 0 && this.ajaxCallbackTimeout > 0) {
-			_ajaxCallbackTimeout = this.ajaxCallbackTimeout;
-		}
-
-
-
-		var errFn = '';
-		if(typeof ops.errorFunction != 'undefined') errFn = ops.errorFunction;
-
-		if(rowNum == '') rowNum = 1;
-		if(typeof rowNum == 'undefined') rowNum = 1;
-
-		//
-		//rowNum can be 1, 2, 3, etc. or 1:none, 3:all etc
-		//we want tempRowNum to be 1, 2, none, all so we can pass that into _getData(), and currentRowNum to be the actual current row number
-		//if you pass in say 3, then tempRowNum and currentRowNum are both 3
-		//but if you pass in 3:all, then tempRowNum = 'all' and currentRowNum = 3
-		if(isNaN(rowNum)) {
-			if(rowNum.toLowerCase() == 'all' || rowNum.toLowerCase() == 'all:all' ) {
-				var tempRowNum = 'all';
-				var currentRowNum = this._selectedRow;
-
-			} else if (rowNum.toLowerCase() == 'none' || rowNum.toLowerCase() == 'none:none' ) {
-				var tempRowNum = 'none';
-				var currentRowNum = this._selectedRow;
-			} else {
-				if(rowNum.indexOf(':') == -1 ) {
-				    var tempRowNum = 'all';
-				    var currentRowNum = this._selectedRow;
-				} else {
-				    var rowNumC = new String(rowNum);
-				    var currentRowNum = rowNumC.split(':')[0];
-				var	tempRowNum = rowNumC.split(':')[1];
-				};
-			}
-		} else {
-			var tempRowNum = rowNum;
-			var currentRowNum = rowNum;
-		}
-		//var data = this._getData(part,rowNum);
-		var data = '';
-		if(flagSubmitFormData==true) {
-			data = this.harvest({flagHarvestImageData: !flagSaveListData, flagInAjaxCallback: true} );
-		}
-
-		var browserData = $u.o.toJSON(A5.flags);
-		data = data + '&' + A5.ajax.buildURLParam('__a5browserflags',browserData);
-		data = data + '&_part=' + part;
-		data = '&' + data;
-
-
-		////////////////////////
-		var _rsdata = [];
-		if(typeof this.repeatingSections != 'undefined') {
-			for(var n in this.repeatingSections) {
-				_rsdata.push({name: n, info: this.repeatingSections[n]._r[0].i})
-			}
-		}
-		if(_rsdata.length > 0) {
-			data = data + '&' + A5.ajax.buildURLParam('__rsinfo',JSON.stringify(_rsdata));
-		}
-		//////////////////////////////
-
-		if(typeof ops.chunkedResponses != 'undefined') {
-			var cr = JSON.stringify(ops.chunkedResponses);
-			data = data + '&' + A5.ajax.buildURLParam('__chunkedResponses',cr);
-		}
-
-		var hc = []
-		for(var c in this._hiddenControls) {
-			hc.push(c);
-		}
-
-		data = data + '&_hiddenControls=' + JSON.stringify(hc);
-
-		//get repeating section active rows
-		var rs = {};
-		var rsPname = '';
-
-		if(flagSubmitFormData) {
-			for(var repeatingSection in this.repeatingSections) {
-				rsPname = '_repeatingSections.' + repeatingSection;
-				rs = this.repeatingSections[repeatingSection];
-				if(typeof rs == 'undefined') return false;
-				data = data + '&' +rsPname + '.activeRow=' + rs.activeRow;
-				data = data + '&' + rsPname + '.visibleRows=' + this.getRepeatingSectionVisibleRows(repeatingSection);
-				var rsDeletedInst = [];
-				var rsDirtyInst = [];
-				for(var i = 1; i <=rs.rows; i++)  {
-					if(rs._r[currentRowNum-1].i[i-1].deleted) rsDeletedInst.push(i);
-					if(rs._r[currentRowNum-1].i[i-1].dirty) rsDirtyInst.push(i);
-				}
-				data = data + '&' + rsPname + '.deletedRows='+rsDeletedInst.join(',');
-				data = data + '&' + rsPname + '.dirtyRows='+rsDirtyInst.join(',');
-			}
-		}
-
-		if(callbackURL == '') {
-			data = '_XbasicFunction='+xbasicFunction+'&_currentRow='+currentRowNum+'&__FormAction=GenericAjaxCallback&__FormID=' + this.gridId+data;
-			callbackURL = this.ajaxURL;
-		} else {
-			data = '_Action='+xbasicFunction+'&_currentRow='+currentRowNum+'&__FormAction=GenericAjaxCallback&__FormID=' + this.gridId+data;
-		}
-		if(otherData!='') data=data + '&' + otherData;
-		data = data + '&' + this.getStateInfo();
-
-
-
-		if(xbasicFunction == 'system:submitDialog') {
-			var jwt = '';
-			if(typeof this.__jwt != 'undefined') jwt = this.__jwt;
-			var _jwtdata
-			_jwtdata = A5.ajax.buildURLParam('__jwt',jwt);
-			data = data + '&' + _jwtdata;
-
-		}
-
-
-
-		data = data + '&__componentGUID=' + this.componentGUID + '&__instanceGUID=' + this._getInstanceId(false);
-
-		data = data + '&__callbackId=' + callbackId ;
-
-		var submitListsData = false;
-		if(typeof ops.submitListData != 'undefined') submitListsData = ops.submitListData;
-		if(submitListsData) {
-			var __listData = this.getListDataAll()
-			data = data + '&' + A5.ajax.buildURLParam('__listData',JSON.stringify(__listData));
-		}
-
-
-
-		var listInfo = this.listInfo();
-		if(listInfo != '') data = data + '&' + listInfo;
-
-
-		var aFail = {};
-		//aFail.errorHandle = Function(this.dialogId + '_DlgObj._executeEvent(\'onAjaxCallbackFailed\',this)');
-		//aFail.errorHandleContext = {xbasicFunctionName: xbasicFunction, ajaxEvent: 'AjaxCallback'};
-		//errFn was passed in
-		aFail.errorHandleContext = {xbasicFunctionName: xbasicFunction, ajaxEvent: 'AjaxCallback', callbackId: callbackId,  _uerrorFn: errFn};
-
-		//see blow - added in check for status code 401 and 403
-		aFail.errorHandle = Function(this.dialogId + '_DlgObj._executeEvent(\'onAjaxCallbackFailed\',this); if(this._uerrorFn.constructor == Function) this._uerrorFn(); ');
-
-
-		aFail.timeout = _ajaxCallbackTimeout;
-		/*
-		inside aFail.errorHandle, you can see arguments[0].status
-			arguments[0].status == 401 -- fire 'securityNotAuthenticated' event - user is not logged in and has tried to do something that required a login
-			arguments[0].status == 403  -- fire 'securityPermissionDenied' event - user is logged in, but does not have permission to do what they tried to do
-
-		aFail.errorHandle = function(e) { }
-		aFail.onload
-		//onprogress
-		//onerror
-		//onabort
-		//onload
-		*/
-
-		var errorHandleFunction = [
-		"var obj = " + this.dialogId + "_DlgObj;",
-		"if(arguments[0].status == 401) {",
-		"	obj._executeEvent('securityNotAuthenticated',{xbasicFunctionName: '"+xbasicFunction+"' }); return false;",
-		"}",
-		"if(arguments[0].status == 503) {",
-				" alert('Server did not respond. May have exceeded session limit for unlicensed server. Try to stop/re-start the server.');	",
-		"}",
-		"if(arguments[0].status == 403) {",
-		"	obj._executeEvent('securityPermissionDenied',{xbasicFunctionName: '"+xbasicFunction+"' }); return false;",
-		"}",
-		"obj._executeEvent('onAjaxCallbackFailed',this); if(this._uerrorFn.constructor == Function) this._uerrorFn(); "
-		].join('\n');
-		aFail.errorHandle = Function( errorHandleFunction );
-
-		var flagChunkedResponse = false;
-		try{
-			flagChunkedResponse = ops.chunkedResponses.allow
-		}catch(e){ }
-
-		/*
-		THIS DOES NOT WORK
-		if(!flagChunkedResponse) {
-			//even though use did not mark request a chunked, turn on chunked support with default values
-			ops.chunkedResponses = {};
-			ops.chunkedResponses.maxMessages = -1;
-			flagChunkedResponse = true;
-		}
-		*/
-
-		flagChunkedResponse = flagChunkedResponse && !this._embeddedMode;
-
-		if(flagChunkedResponse) {
-			var startTime = Date.now();
-			var length = 0;
-			var _chunkCount = 0;
-			var done = false;
-			var marker = '/*9999*/'
-			var _maxMessages = ops.chunkedResponses.maxMessages;
-			if(_maxMessages == -1) _maxMessages = 999999999;
-			aFail.handleGeneric = false;
-			aFail.handle = function(obj) {
-				var resp = obj.responseText;
-				if(typeof resp != 'undefined') {
-					if(resp.indexOf('__chunkedresponsemessagesdone__') > -1) {
-						resp = resp.split('__chunkedresponsemessagesdone__')[1];
-						if(resp.indexOf(marker) > -1) eval(resp);
-					}
-				}
-			}
-			aFail.onprogress = function(arg) {
-
-				if(_ajaxCallbackTimeout > 0) {
-					this.timeout = Date.now() - startTime + _ajaxCallbackTimeout;
-				}
-
-				if(typeof this.responseText != 'undefined' && !done && this.responseText.indexOf(marker) > -1 ) {
-
-					var resp = this.responseText;
-					if(typeof resp != 'undefined') {
-						var endTokenIndex = resp.indexOf('__chunkedresponsemessagesdone__',length);
-						if(endTokenIndex != -1) {
-							resp = resp.substring(length,endTokenIndex);
-							done = true;
-						} else {
-							resp = resp.substring(length);
-						}
-						if(resp) {
-							//resp = resp.substring(length);
-
-							if(_chunkCount >= _maxMessages) {
-								//do nothing
-							} else {
-
-								if(resp.indexOf(marker) > -1) {
-									eval(resp);
-									length = this.responseText.length;
-									_chunkCount++;
-								}
-							}
-
-						}
-					}
-				}
-			}
-		}
-
-
-		if(this._embeddedMode || this._livePreviewInBuilder) flagGetLocationData = false;
-
-		var flagLogTime = false;
-		if(A5 && A5.logTime) flagLogTime = A5.logTime;
-		if(flagLogTime) {
-			var d = new Date();
-			console.log('Inside ajaxCallback - about to fire off Ajax request - data to submit has been collected: ' + d.toString());
-		}
-
-
-		var that = this;
-		///////define functions that do the ajax, server availability and speed test
-		function _doAjax() { A5.ajax.callback(callbackURL,data,aFail);return false; }
-		function _speedTest() {
-			//alert('do speed test ops.maxspeedtestduration ' + ops.maxspeedtestduration);
-			var _speedTestOK = function(elapse) {
-				console.log('Speed test elapsed time (milliseconds): ' + elapse)
-				//alert(elapse)
-				if(elapse < Number(ops.maxspeedtestduration)) {
-					//do the synchronization operation
-					//alert('passed');
-					_doAjax()
-				}else {
-					//alert('Connection not good enough. Please try later.');
-					if(typeof ops.onPoorConnection == 'function') ops.onPoorConnection.call()
-				}
-			}
-			that.networkSpeedTest(ops.amountofdatatosend,_speedTestOK);
-		}
-		if(flagDoSpeedTest) {
-			function _serverCheckSuccess() { _speedTest()}
-		} else {
-			function _serverCheckSuccess() { _doAjax()}
-		}
-		function _serverCheckFail() { if(typeof ops.onServerNotAvailable == 'function') ops.onServerNotAvailable.call()};
-		////////////////////////////end define function
-
-		if(flagGetLocationData) {
-				navigator.geolocation.getCurrentPosition(
-				function(pos) {
-					var loc = pos.coords.latitude+','+pos.coords.longitude;
-					var locData='&__locationFound=true&__locationLatitude=' +pos.coords.latitude + '&__locationLongitude=' + pos.coords.longitude
-					data = data + locData;
-
-					if (!flagCheckifServerAvailable) {
-						_doAjax()
-					} else {
-						//check if server is available
-						that.serverIsAvailable(300,_serverCheckSuccess,_serverCheckFail);
-					}
-				},
-				function(error) {
-					//failed
-					var locData='&__locationFound=false'
-					data = data + locData;
-					if (!flagCheckifServerAvailable) {
-						_doAjax()
-					} else {
-						//check if server is available
-						that.serverIsAvailable(Number(ops.serveravailabletimeout),_serverCheckSuccess,_serverCheckFail);
-					}
- 			} ,	{enableHighAccuracy : _locationHighAccuracy, timeout: _locationTimeout, maximumAge: _locationMaximumAge})
-		} else {
-			//location not supported
-			var locData='&__locationFound=false'
-			data = data + locData;
-			var that = this;
-			if(!flagCheckifServerAvailable) {
-				_doAjax()
-			} else {
-				this.serverIsAvailable(Number(ops.serveravailabletimeout),_serverCheckSuccess,_serverCheckFail);
-			}
-		}
-	},
 
 
 
