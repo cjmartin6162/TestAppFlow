@@ -159,4 +159,21 @@
 	<plugin name="cordova-plugin-network-information" source="npm" version="2.0.2" />
 	<plugin name="cordova-plugin-splashscreen" source="npm" version="5.0.3" />
 	<plugin name="cordova-plugin-whitelist" source="npm" version="1.3.3" />
+	<!-- cordova-plugin-wkwebview-engine support -->
+	<plugin name="cordova-plugin-alpha-wkwebview-file-xhr" spec="https://github.com/remoorejr/cordova-plugin-alpha-wkwebview-file-xhr.git" source="git" />
+	<platform name = "ios">
+		<!-- this preference requires cordova-ios release 5.1.1, compliled code will not reference UIWebView -->
+		<!-- Note: PhoneGap Build CLI-9.0.0 uses cordova-ios release 5.0.1, this preference is ignored by cordova-ios release 5.0.1 -->
+		<preference name="WKWebViewOnly" value="true" />
+		<feature name="CDVWKWebViewEngine">
+  			<param name="ios-package" value="CDVWKWebViewEngine" />
+		</feature>
+		<preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+		<!--wkwebview-file-xhr options -->
+		<preference name="InterceptRemoteRequests" value="all" />
+		<preference name="NoS3Intercepts" value="true" />
+		<!-- for Instant Update Support -->
+		<allow-navigation href="*" />
+	</platform>
+	<!-- end cordova-plugin-wkwebview-engine support -->
 </widget>

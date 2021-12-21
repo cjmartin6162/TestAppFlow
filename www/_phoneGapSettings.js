@@ -50,7 +50,8 @@ function _phoneGapSettings() {
         "cordova-plugin-device": "npm",
         "cordova-plugin-network-information": "npm",
         "cordova-plugin-splashscreen": "npm",
-        "cordova-plugin-whitelist": "npm"
+        "cordova-plugin-whitelist": "npm",
+        "cordova-plugin-alpha-wkwebview-file-xhr": "git"
     }
 };
 }
