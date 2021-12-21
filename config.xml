@@ -158,8 +158,7 @@
 		<allow-navigation href="*" />
 	</platform>
 	<!-- end cordova-plugin-wkwebview-engine support -->
-	<platform name="ios" />	<plugin name="cordova-plugin-file" source="npm" version="4.3.3" />
-	<plugin name="cordova-plugin-geolocation" source="npm" version="4.0.2" />
+	<platform name="ios" />	<plugin name="cordova-plugin-geolocation" source="npm" version="4.0.2" />
 	<!-- cordova-plugin-geolocation support -->
 		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
   		  	<string>This app requires access to your location for recording location based information.</string>
