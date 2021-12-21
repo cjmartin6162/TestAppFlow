@@ -159,7 +159,6 @@
 	</platform>
 	<!-- end cordova-plugin-wkwebview-engine support -->
 	<platform name="ios" />
-	<plugin name="cordova-plugin-battery-status" source="npm" version="2.0.3" />
 	<plugin name="cordova-plugin-camera" source="npm" version="4.1.0" />
 	<!-- cordova-plugin-camera support -->
 		<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
