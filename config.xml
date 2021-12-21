@@ -158,21 +158,9 @@
 		<allow-navigation href="*" />
 	</platform>
 	<!-- end cordova-plugin-wkwebview-engine support -->
-	<platform name="ios" />	<plugin name="cordova-plugin-geolocation" source="npm" version="4.0.2" />
-	<!-- cordova-plugin-geolocation support -->
+	<platform name="ios" />	<!-- cordova-plugin-geolocation support -->
 		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
   		  	<string>This app requires access to your location for recording location based information.</string>
 		</edit-config>
-	<!-- end cordova-plugin-geolocation support -->
-	<plugin name="cordova-plugin-globalization" source="npm" version="1.0.8" />
-	<plugin name="cordova-plugin-inappbrowser" source="npm" version="3.2.0" />
-	<plugin name="cordova-plugin-media" source="npm" version="5.0.3" />
-	<!-- cordova-plugin-media support -->
-		<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge">
-  		  	<string>This app requires access to the microphone for audio recording.</string>
-		</edit-config>
-	<!-- end cordova-plugin-media support -->
-	<plugin name="cordova-plugin-dialogs" source="npm" version="2.0.2" />
-	<plugin name="cordova-plugin-vibration" source="npm" version="3.1.1" />
-	<plugin name="cordova-plugin-x-toast" source="npm" version="2.6.0" />
+	<!-- end cordova-plugin-geolocation support -->	<plugin name="cordova-plugin-x-toast" source="npm" version="2.6.0" />
 </widget>
