@@ -108,7 +108,7 @@
 	<splash platform="android" density="port-xhdpi" src="resources/screen/android/screen-xhdpi-portrait.png" />
 	<splash platform="android" density="port-xxhdpi" src="resources/screen/android/screen-xxhdpi-portrait.png" />
 	<splash platform="android" density="port-xxxhdpi" src="resources/screen/android/screen-xxxhdpi-portrait.png" />
-    <splash platform="android" density="land-xxxhdpi" src="resources/screen/android/screen-xxxhdpi-landscape.png"  />
+	<splash platform="android" density="land-xxxhdpi" src="resources/screen/android/screen-xxxhdpi-landscape.png"  />
 	<splash platform="android" density="land-xxhdpi" src="resources/screen/android/screen-xxhdpi-landscape.png"  />
 	<splash platform="android" density="land-xhdpi" src="resources/screen/android/screen-xhdpi-landscape.png"  />
 	<splash platform="android" density="land-hdpi" src="resources/screen/android/screen-hdpi-landscape.png"  />
@@ -116,45 +116,26 @@
 	<splash platform="android" density="land-ldpi" src="resources/screen/android/screen-ldpi-landscape.png"  />
 <!-- end Android legacy -->
 		
-<!-- Android 9 patch -->	
+<!-- Android 9 patch -->
 <!-- end Android 9 patch -->
    
 <!-- iOS -->
-<!-- iOS legacy --> 
-	<!-- iPhone and iPod Touch -->
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-portrait.png" width="320" height="480"  />
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960"  />
-	<!-- iPhone 5 and iPod Touch (5th generation) -->
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136" />
-	<!-- iPhone 6, 7, 8 -->
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-portrait-667h-2x.png" width="750" height="1334" />
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-portrait-736h-3x.png" width="1242" height="2208" />
-	<splash platform="ios" src="resources/screen/ios/screen-iphone-landscape-736h-3x.png" width="2208" height="1242" />
-	<!-- iPhone X -->
-	<splash platform="ios" src="resources/screen/ios/screen-iphonex-portrait.png" width="1125" height="2436"  />
-	<splash platform="ios" src="resources/screen/ios/screen-iphonex-landscape.png" width="2436" height="1125"  />
-	<!-- iPad -->
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-portrait.png" width="768" height="1024"  />
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-landscape.png" width="1024" height="768"  />
-	<!-- Retina iPad -->
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-portrait-2x.png" width="1536" height="2048"  />
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-landscape-2x.png" width="2048" height="1536" />
-	<!-- Retina 10.5 iPad Pro -->
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-pro10-portrait-3x.png" width="1668" height="2224"  />
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-pro10-landscape-3x.png" width="2224" height="1668" />
-	<!-- Retina iPad Pro -->
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-pro-portrait-3x.png" width="2048" height="2732"  />
-	<splash platform="ios" src="resources/screen/ios/screen-ipad-pro-landscape-3x.png" width="2732" height="2048" />
+<!-- iOS legacy -->
 <!-- end iOS Legacy -->
 		
 <!-- iOS storyboards -->
+	<splash platform="ios" src="resources/screen/ios/Default@2x~universal~anyany.png" />
+	<splash platform="ios" src="resources/screen/ios/Default@2x~universal~comany.png" />
+	<splash platform="ios" src="resources/screen/ios/Default@2x~universal~comcom.png" />
+	<splash platform="ios" src="resources/screen/ios/Default@3x~universal~anyany.png" />
+	<splash platform="ios" src="resources/screen/ios/Default@3x~universal~comany.png" />
+	<splash platform="ios" src="resources/screen/ios/Default@3x~universal~anycom.png" />
 <!-- end iOS storyboards -->
 <!-- Windows 8 -->
 	<splash platform="winphone" src="resources/screen/windows-phone/screen-portrait.jpg" />
 <!-- Windows 8.1 -->
 	<splash platform="winphone" src="resources/screen/windows-phone/screen.scale-240.png" />
     <access origin="*" />
-	<platform name="android" />
 	<plugin name="cordova-plugin-device" source="npm" version="2.0.3" />
 	<plugin name="cordova-plugin-network-information" source="npm" version="2.0.2" />
 	<plugin name="cordova-plugin-splashscreen" source="npm" version="5.0.3" />
@@ -172,8 +153,44 @@
 		<!--wkwebview-file-xhr options -->
 		<preference name="InterceptRemoteRequests" value="all" />
 		<preference name="NoS3Intercepts" value="true" />
+	<preference name="show-splash-screen-spinner" value="true" />
 		<!-- for Instant Update Support -->
 		<allow-navigation href="*" />
 	</platform>
 	<!-- end cordova-plugin-wkwebview-engine support -->
+	<platform name="ios" />
+	<plugin name="cordova-plugin-battery-status" source="npm" version="2.0.3" />
+	<plugin name="cordova-plugin-camera" source="npm" version="4.1.0" />
+	<!-- cordova-plugin-camera support -->
+		<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+  		  	<string>This app requires camera access to take photos.</string>
+		</edit-config>
+		<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+ 		   <string>This app requires photo library access to access and display photo library pictures.</string>
+		</edit-config>
+		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+		    <string>This app requires access to your location for recording location based information.</string>
+		</edit-config>
+		<edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+		    <string>This app requires photo library write access to save pictures in the photo library.</string>
+		</edit-config>
+	<!-- end cordova-plugin-camera support -->
+	<plugin name="cordova-plugin-file" source="npm" version="4.3.3" />
+	<plugin name="cordova-plugin-geolocation" source="npm" version="4.0.2" />
+	<!-- cordova-plugin-geolocation support -->
+		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+  		  	<string>This app requires access to your location for recording location based information.</string>
+		</edit-config>
+	<!-- end cordova-plugin-geolocation support -->
+	<plugin name="cordova-plugin-globalization" source="npm" version="1.0.8" />
+	<plugin name="cordova-plugin-inappbrowser" source="npm" version="3.2.0" />
+	<plugin name="cordova-plugin-media" source="npm" version="5.0.3" />
+	<!-- cordova-plugin-media support -->
+		<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge">
+  		  	<string>This app requires access to the microphone for audio recording.</string>
+		</edit-config>
+	<!-- end cordova-plugin-media support -->
+	<plugin name="cordova-plugin-dialogs" source="npm" version="2.0.2" />
+	<plugin name="cordova-plugin-vibration" source="npm" version="3.1.1" />
+	<plugin name="cordova-plugin-x-toast" source="npm" version="2.6.0" />
 </widget>

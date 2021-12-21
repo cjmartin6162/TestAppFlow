@@ -51,7 +51,17 @@ function _phoneGapSettings() {
         "cordova-plugin-network-information": "npm",
         "cordova-plugin-splashscreen": "npm",
         "cordova-plugin-whitelist": "npm",
-        "cordova-plugin-alpha-wkwebview-file-xhr": "git"
+        "cordova-plugin-alpha-wkwebview-file-xhr": "git",
+        "cordova-plugin-battery-status": "npm",
+        "cordova-plugin-camera": "npm",
+        "cordova-plugin-file": "npm",
+        "cordova-plugin-geolocation": "npm",
+        "cordova-plugin-globalization": "npm",
+        "cordova-plugin-inappbrowser": "npm",
+        "cordova-plugin-media": "npm",
+        "cordova-plugin-dialogs": "npm",
+        "cordova-plugin-vibration": "npm",
+        "cordova-plugin-x-toast": "npm"
     }
 };
 }
