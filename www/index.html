@@ -105,7 +105,7 @@ iframe {-webkit-user-select: text;}
 
 </style>
 
-<link palette="" rel="stylesheet" type="text/css" href="css/Alpha/style.css ">
+<link palette="" rel="stylesheet" type="text/css" href="css/iOS7/style.css ">
 <link rel="stylesheet" type="text/css" href="css/_sharedStyles/style.css">
 
 <style type="text/css">
@@ -115,6 +115,12 @@ iframe {-webkit-user-select: text;}
   width: auto; }
 .iconDisabled {
   opacity: .75; }
+.iPhoneXWrapper {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom); }
+.iPhoneXBody {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right); }
 </style>
 <style>
 </style>
@@ -123,7 +129,7 @@ iframe {-webkit-user-select: text;}
 
 <script type="text/javascript" src="javascript/a5.js"></script>
 <script type="text/javascript" src="javascript/a5_url.js"></script>
-<script type="text/javascript" src="css/Alpha/style.js"></script>
+<script type="text/javascript" src="css/iOS7/style.js"></script>
 <script type="text/javascript" src="javascript/A5jQueryWithUI.js"></script>
 <script>
 	if(typeof jQuery != 'undefined') jQuery.noConflict();
@@ -131,7 +137,7 @@ iframe {-webkit-user-select: text;}
 <script type="text/javascript" src="_phoneGapSettings.js"></script>
 
 <title></title></head>
-<body class="page  pulse">
+<body class="iOS7Page">
 <iframe style="display:none;" id="DLG1.__IFRAME1"></iframe>
 <input type="hidden" value="" id="DLG1.PARAMETERBUCKET"/>
 <input type="file" style="position:absolute; top:-1000px;visibility:hidden;" accept="image/*" id="DLG1._GETPHOTO"/><input type="file" style="position:absolute; top:-1000px;visibility:hidden;" name="files[]" multiple = "" id="DLG1._GETFILEMULTI"/><input type="file" style="position:absolute; top:-1000px;visibility:hidden;" name="files[]" id="DLG1._GETFILE"/>
@@ -266,12 +272,130 @@ if(typeof DLG1_DlgObj == 'object') {
 	}
 	delete DLG1_PanelObj;
 }
-;window['DLG1_PanelObj'] = new A5.PanelCard({
-	theme: 'Alpha',
+;window['DLG1_PanelObj'] = new A5.PanelLayout([
+{
+	name: 'PANEL_APPLICATIONNAVIGATOR',
+	src: new A5.PanelNavigator([
+{
+	name: 'PANEL_LOGIN',
+	src: new A5.PanelCard({
+	theme: 'iOS7',
 	body: {
 		content: {
 			type: 'html',
-			src: '<div class="A5CWLayout" style="width: " >\r\n\t<button type="button" id="DLG1.V.R1.BUTTON_1"    ></button>\r\n</div><br  style="clear:both; " />\r\n<div class="A5floatClear"></div>'
+			src: '<div class="A5CWLayout" style="width: 0px" >\r\n\t<div id="SPACER_1" style="width: 100%; height: 75px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;; font: 0pt Arial;">&nbsp;</div>\r\n</div>\r\n\t\r\n<div class="A5CWLayout" style="width: 100%" >\r\n\t<input\ttype="text" id="DLG1.V.R1.USERNAME" title=""  autocapitalize="off"  autocorrect="off"     class="iOS7Edit " style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.USERNAME"    value=""    />\r\n\r\n</div><br  style="clear:both; " />\r\n<form onsubmit="__preventDefault(event);"><div class="A5CWLayout" style="width: 100%" >\r\n\t<input\ttype="password" id="DLG1.V.R1.PASSWORD" title=""  autocapitalize="off"  autocorrect="off"     class="iOS7Edit " style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.PASSWORD"    value=""    />\r\n\r\n</div><br  style="clear:both; " /></form>\r\n<div class="A5CWLayout" style="width: 100%" >\r\n\t<button type="button" id="DLG1.V.R1.LOGIN_BUTTON"    ></button>\r\n</div><br  style="clear:both; " />\r\n<div class="A5CWLayout" style="width: 100%" >\r\n\t<button type="button" id="DLG1.V.R1.LOGOUT_BUTTON"    ></button>\r\n</div><br  style="clear:both; " />\r\n<div class="A5CWLayout" style="width: 100%"  id="DLG1.V.R1.LOGIN_ERRORS" style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;" _type="placeholder">\r\n</div><br  style="clear:both; " />\r\n<div class="A5CWLayout" style="width: " >\r\n\t<a id="DLG1.V.R1.HYPERLINK_1" title="" href="#"  class="iOS7Link" style="box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"  onClick="$e.stopEvent(event);"  ><span style="margin-left: 40px; color: #000000; font-style: normal;">NEW USER</span></a>\r\n</div><div class="A5CWLayout" style="width:40px; font: 0pt;">&nbsp;</div>\r\n<div class="A5CWLayout" style="width: " >\r\n\t<a id="DLG1.V.R1.HYPERLINK_2" title="" href="#"  class="iOS7Link" style="box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"  onClick="$e.stopEvent(event);"  ><span style="color: #000000; font-style: normal; margin-right: 20px;">FORGOT PASSWORD</span></a>\r\n</div>\r\n<div class="A5floatClear"></div>'
+		},
+		scroll: {
+			axis: 'both',
+			stopPropogation: false,
+			pull: {
+				y: 'auto',
+				x: 'auto',
+				duration: 1000
+			},
+			indicator: {
+				show: true,
+				h: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					left: '0px',
+					right: '0px'
+				},
+				v: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					top: '0px',
+					bottom: '0px'
+				}
+			}
+		},
+		className: 'iOS7PanelBody  iPhoneXBody',
+		style: 'background-color: #c9ccce;'
+	},
+	header: {
+		html: '<div class="A5CWLayout" style="width: 100px" > \t<div id="DLG1.V.R1.IMAGE_2" style="z-index:10000; margin-left: 130px; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ; padding:0;margin:0;"    > \t\t<img src="dogsmaller.bmp" class="" style="margin-left: 130px; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;" title=""  onerror="if(typeof DLG1_DlgObj != \'undefined\') DLG1_DlgObj._executeEvent(\'onImageError\',{element: this});"  /> \t</div> </div><br  style="clear:both; " /> <div class="A5CWLayout" style="width: 100%" > \t<div id="DLG1.V.R1.IMAGE_1" style="z-index:10000; text-align: left; width: 100%; height: 100; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ; padding:0;margin:0;"    > \t\t<img src="assets/images/logo/PVVLogo.jpg" class="" style="text-align: left; width: 100%; height: 100; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;" title=""  onerror="if(typeof DLG1_DlgObj != \'undefined\') DLG1_DlgObj._executeEvent(\'onImageError\',{element: this});"  /> \t</div> </div> <div style="display:none;"></div>',
+		show: true,
+		style: 'color: #ffffff; background-color: #ffffff; border-color: #ffffff; width: 100%; height: 15%; '
+	},
+	footer: {
+	},
+	overlay: {
+	},
+	onSize: function() {
+if(typeof DLG1_DlgObj != 'undefined' && typeof DLG1_DlgObj._panelCardResize != 'undefined') { DLG1_DlgObj._panelCardResize('PANEL_LOGIN'); };},
+	onView: function() {;
+},
+	onActivate: function() {},
+	onCreate: function() {
+}
+})
+},
+{
+	name: 'USER_REGISTRATION',
+	src: new A5.PanelCard({
+	theme: 'iOS7',
+	body: {
+		content: {
+			type: 'html',
+			src: '<div class="A5CWLayout" style="width: " >\r\n\t<div id="DLG1.V.R1.STATICTEXT_2" title=""  class="" style="box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"   ><strong><font size="4">New User Registration</font></strong></div>\r\n</div><br  style="clear:both; " />\r\n<div class="A5CWLayout" style="width: 0px" >\r\n\t<div id="SPACER_2" style="width: 100%; height: 50px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;; font: 0pt Arial;">&nbsp;</div>\r\n</div>\r\n\t\r\n<div class="A5CWLayout" style="width: 100%" >\r\n\t<input\ttype="text" id="DLG1.V.R1.USERNAME1" title=""  autocapitalize="off"  autocorrect="off"     class="iOS7Edit " style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.USERNAME1"    value=""    />\r\n\r\n</div><br  style="clear:both; " />\r\n<form onsubmit="__preventDefault(event);"><div class="A5CWLayout" style="width: 100%" >\r\n\t<input\ttype="password" id="DLG1.V.R1.PASSWORD1" title=""  autocapitalize="off"  autocorrect="off"     class="iOS7Edit " style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.PASSWORD1"    value=""    />\r\n\r\n</div></form>\r\n<form onsubmit="__preventDefault(event);"><div class="A5CWLayout" style="width: 100%" >\r\n\t<input\ttype="password" id="DLG1.V.R1.PASSWORD2" title=""     class="iOS7Edit " style="width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"    name="V.R1.PASSWORD2"    value=""    />\r\n\r\n</div><br  style="clear:both; " /><div  style="height:40px; font: 0pt;"></div></form>\r\n<div class="A5CWLayout" style="width: " >\r\n\t<button type="button" id="DLG1.V.R1.BUTTON_SUBMIT"    ></button>\r\n</div>\r\n<div class="A5CWLayout" style="width: " >\r\n\t<button type="button" id="DLG1.V.R1.BUTTON_RESET"    ></button>\r\n</div>\r\n<div class="A5CWLayout" style="width: 90px" >\r\n\t<button type="button" id="DLG1.V.R1.BUTTON_5"    ></button>\r\n</div><br  style="clear:both; " />\r\n<div class="A5floatClear"></div>'
+		},
+		scroll: {
+			axis: 'both',
+			stopPropogation: false,
+			pull: {
+				y: 'auto',
+				x: 'auto',
+				duration: 1000
+			},
+			indicator: {
+				show: true,
+				h: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					left: '0px',
+					right: '0px'
+				},
+				v: {
+					show: true,
+					location: 'right',
+					offset: '0px',
+					top: '0px',
+					bottom: '0px'
+				}
+			}
+		},
+		className: 'iOS7PanelBody  iPhoneXBody',
+		style: 'background-color: #c9ccce;'
+	},
+	header: {
+		html: '<div class="A5CWLayout" style="width: 100px" > \t<div id="DLG1.V.R1.IMAGE_4" style="z-index:10000; margin-left: 130px; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ; padding:0;margin:0;"    > \t\t<img src="dogsmaller.bmp" class="" style="margin-left: 130px; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;" title=""  onerror="if(typeof DLG1_DlgObj != \'undefined\') DLG1_DlgObj._executeEvent(\'onImageError\',{element: this});"  /> \t</div> </div><br  style="clear:both; " /> <div class="A5CWLayout" style="width: 100%" > \t<div id="DLG1.V.R1.IMAGE_5" style="z-index:10000; text-align: left; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ; padding:0;margin:0;"    > \t\t<img src="assets/images/logo/PVVLogo.jpg" class="" style="text-align: left; width: 100%; height: 100px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;" title=""  onerror="if(typeof DLG1_DlgObj != \'undefined\') DLG1_DlgObj._executeEvent(\'onImageError\',{element: this});"  /> \t</div> </div> <div style="display:none;"></div>',
+		show: true,
+		style: 'color: #ffffff; background-color: #ffffff; border-color: #ffffff; width: 100%; height: 140px; '
+	},
+	footer: {
+	},
+	overlay: {
+	},
+	onSize: function() {
+if(typeof DLG1_DlgObj != 'undefined' && typeof DLG1_DlgObj._panelCardResize != 'undefined') { DLG1_DlgObj._panelCardResize('USER_REGISTRATION'); };},
+	onView: function() {;
+},
+	onActivate: function() {},
+	onCreate: function() {
+}
+})
+},
+{
+	name: 'RECOVERPASSWORD',
+	src: new A5.PanelCard({
+	theme: 'iOS7',
+	body: {
+		content: {
+			type: 'html',
+			src: '<div \tid="DLG1.V.R1.CONTAINER_1"   \r\n\t\t\tA5-containerType="none"\r\n\t\t\tclass="A5CWLayout "  style="margin-top: 100px; margin-left: 70px; margin-right: 50px; "  >\r\n<div class="A5CWLayout" style="width: " >\r\n\t<div id="DLG1.V.R1.STATICTEXT_4" title=""  class="" style="box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;"   ><br /><br /><br /><strong>Please Email</strong><br /> <font color="#3b3ee6"> <a href="mailto:support@petvideoverify.com">support@petvideoverify.com</a></font> \r\n<br /> <br /> <strong>We will reset your password for you!</strong>\r\n<br /> <br /> <strong>Please allow 24 hours or more for a response!</strong>\r\n<br /> <br /> <br /> <strong>The Pet Video Verify Team</strong></div>\r\n</div><br  style="clear:both; " /><div  style="height:50px; font: 0pt;"></div>\r\n<div class="A5CWLayout" style="width: " >\r\n\t<button type="button" id="DLG1.V.R1.BUTTON_7"    ></button>\r\n</div><br  style="clear:both; " />\r\n<div style="display:none;font: 0pt arial;clear:both;"></div>\r\n\t</div>\r\n<br  id="DLG1.V.R1.CONTAINER_1.BREAK"  style="clear:both; " />\r\n<div class="A5floatClear"></div>'
 		},
 		scroll: {
 			axis: 'both',
@@ -298,7 +422,9 @@ if(typeof DLG1_DlgObj == 'object') {
 					bottom: '0px'
 				}
 			}
-		}
+		},
+		className: 'iOS7PanelBody  iPhoneXBody',
+		style: 'background-color: #c9ccce;'
 	},
 	header: {
 		html: '<div style="display:none;"></div>'
@@ -307,17 +433,178 @@ if(typeof DLG1_DlgObj == 'object') {
 	},
 	overlay: {
 	},
-	onSize: function() {;if(typeof DLG1_DlgObj != 'undefined') {
- if(typeof DLG1_DlgObj._findActiveLayoutRule != 'undefined') {
-  DLG1_DlgObj._findActiveLayoutRule();
- }
-}
-if(typeof DLG1_DlgObj != 'undefined' && typeof DLG1_DlgObj._panelCardResize != 'undefined') { DLG1_DlgObj._panelCardResize('PANELCARD_1'); };},
+	onSize: function() {
+if(typeof DLG1_DlgObj != 'undefined' && typeof DLG1_DlgObj._panelCardResize != 'undefined') { DLG1_DlgObj._panelCardResize('RECOVERPASSWORD'); };},
 	onView: function() {;
 },
 	onActivate: function() {},
 	onCreate: function() {
 }
+})
+},
+{
+	name: 'PANEL_APPLICATION',
+	src: new A5.PanelCard({
+	theme: 'iOS7',
+	body: {
+		content: {
+			type: 'html',
+			src: '\t<div class="">\r\n\t\t<div id="DLG1_DIVCONTAINER_a1ed70e3_f289_42ce_8b23_751047241eed"   ><img src="css/A5System/Images/wait.gif" /> Working...</div>\r\n\t</div><br  style="clear:both; " />\r\n\t\t\r\n<div class="A5floatClear"></div>'
+		},
+		scroll: false,
+		className: 'iOS7PanelBody  iPhoneXBody'
+	},
+	header: {
+		html: '<div style="display:none;"></div>'
+	},
+	footer: {
+	},
+	overlay: {
+	},
+	onSize: function() {if(typeof DLG1_DlgObj != 'undefined' && typeof DLG1_DlgObj._panelCardResize != 'undefined') { DLG1_DlgObj._panelCardResize('PANEL_APPLICATION'); };var that = window['DLG1_PanelObj'];
+setTimeout(function() {
+ var panelName = 'PANEL_APPLICATION';
+ var runJS = true;
+ if(typeof that.state == 'undefined') that.state = {};
+ if(typeof that.state._render != 'undefined') {
+  var rs = that.state._render[panelName];
+  if(typeof rs !=  'undefined') {
+   if(rs == true) {
+    runJS = false;
+   }
+  }
+ }
+ if(runJS) {
+  setTimeout(function(){DLG1_DlgObj._functions.runAction_a1ed70e3_f289_42ce_8b23_751047241eed();},1000);;
+  if(typeof that.state._render == 'undefined') that.state._render = {};
+  that.state._render[panelName] = true;
+ }
+},80)},
+	onView: function() {;
+},
+	onActivate: function() {},
+	onCreate: function() {
+}
+})
+}
+],{
+	type: 'programmatic',
+	flow: 'ltr',
+	loopNavigate: false,
+	onPanelActivate: function() {var that = this;
+setTimeout(function() {
+ var panelName = that.state.activePanel;
+ if(panelName == 'PANEL_APPLICATION') {
+  var runJS = true;
+  if(typeof that.state._render != 'undefined') {
+   var rs = that.state._render[panelName];
+   if(typeof rs !=  'undefined') {
+    if(rs == true) {
+     runJS = false;
+    }
+   }
+  }
+  if(runJS) {
+   setTimeout(function(){DLG1_DlgObj._functions.runAction_a1ed70e3_f289_42ce_8b23_751047241eed();},1000);;
+   if(typeof that.state._render == 'undefined') that.state._render = {};
+   that.state._render[panelName] = true;
+  }
+ }
+},100);},
+	onPanelActivateComplete: function() {if(this.state.activePanel == 'PANEL_APPLICATION') { 
+	var pChild = DLG1_DlgObj.getChildObject('<DEFAULTALIAS>','UX');
+	if(pChild) pChild._executeEvent('onPanelActivate');
+};
+;
+DLG1_DlgObj.refreshClientSideComputations(true);},
+	onPanelView: function() {;
+},
+	onSize: function() {
+;},
+	onCreate: function() {
+},
+	theme: 'iOS7',
+	header: {
+		show: false
+	},
+	footer: {
+	},
+	overlay: {
+	},
+	controls: {
+		prev: {
+			has: false
+		},
+		next: {
+			has: false
+		},
+		back: {
+			has: false
+		},
+		forward: {
+			has: false
+		}
+	},
+	className: ' iPhoneXWrapper',
+	body: {
+	},
+	animation: {
+		duration: 400
+	}
+})
+}
+],{
+	theme: 'iOS7',
+	onSize: function() {
+;if(typeof DLG1_DlgObj != 'undefined') {
+ if(typeof DLG1_DlgObj._findActiveLayoutRule != 'undefined') {
+  DLG1_DlgObj._findActiveLayoutRule();
+ }
+}},
+	onPanelView: function() {},
+	onLayoutRefresh: function() {var visiblePanels = [];
+for(var i = 0; i < this.panels.length; i++) {
+ if(this.panels[i]._hidden  == false) {
+  visiblePanels.push(this.panels[i].name);
+ }
+}},
+	onDockPanelShow: function() {
+},
+	onDockPanelHide: function() {},
+	onCreate: function() {
+},
+	onPanelActivate: function() {DLG1_DlgObj.refreshClientSideComputations(true);
+},
+	flow: 'ltr',
+	header: {
+		show: false
+	},
+	footer: {
+		show: false
+	},
+	overlay: {
+		show: false
+	},
+	dock: {
+		method: 'overlay',
+		flowLock: {
+			has: true,
+			autoHide: true
+		}
+	},
+	controls: {
+		prev: {
+			has: false
+		},
+		next: {
+			has: false
+		}
+	},
+	body: {
+	},
+	animation: {
+		duration: 400
+	}
 })
 var ele = window['DLG1_PanelObj'].create('DLG1.R1');
 		var panelRootId = '{UXPRERENDEROUTPUTDIV}';
@@ -337,20 +624,43 @@ var ele = window['DLG1_PanelObj'].create('DLG1.R1');
 			if(window[wf_alias + '_PanelObj']) window[wf_alias + '_PanelObj'].bindSize('window');
 		}
 DLG1_PanelObj._panelPath = {
+	PANEL_APPLICATIONNAVIGATOR: 'PANEL_APPLICATIONNAVIGATOR',
+	PANEL_LOGIN: 'PANEL_APPLICATIONNAVIGATOR:PANEL_LOGIN',
+	USER_REGISTRATION: 'PANEL_APPLICATIONNAVIGATOR:USER_REGISTRATION',
+	RECOVERPASSWORD: 'PANEL_APPLICATIONNAVIGATOR:RECOVERPASSWORD',
+	PANEL_APPLICATION: 'PANEL_APPLICATIONNAVIGATOR:PANEL_APPLICATION'
 }
 DLG1_PanelObj._displayNames = {
-PANELCARD_1 : 'PANELCARD_1'
+PANEL_LOGIN : 'PANEL_LOGIN',USER_REGISTRATION : 'USER_REGISTRATION',RECOVERPASSWORD : 'RECOVERPASSWORD',PANEL_APPLICATION : 'PANEL_APPLICATION',PANEL_APPLICATIONNAVIGATOR : 'PANEL_APPLICATIONNAVIGATOR',PANELLAYOUT_1 : 'PANELLAYOUT_1'
 };
 if(typeof DLG1_DlgObj == 'object') DLG1_DlgObj._destroy();
 var DLG1_DlgObj = new A5.DialogComponentHelper('DLG1',{
-	ajaxURL: 'APPFLOW.a5wcmp?__virtualPage=__a5RunDialog.a5w&__dialogFilename=APPFLOW&__alias=DLG1&__unsaved=no',
+	ajaxURL: 'PVVMOBILEPPLOGIN.a5wcmp?__virtualPage=__a5RunDialog.a5w&__dialogFilename=PVVMOBILEPPLOGIN&__alias=DLG1&__unsaved=no',
 	_embeddedMode: false,
 	_livePreviewInBuilder: false,
-	componentGUID: '83491482-7bc2-47ba-bc5c-fe32796bcec6',
-	columnInfo: {},
+	componentGUID: 'a067cc25-810d-4471-8d0c-d09016dd90ad',
+	columnInfo: {'HOLDLOGINVALUE': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'N'  },'USERNAME': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'PASSWORD': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'VERSION': {info: {controlType: 'textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'USERNAME1': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C', validate: function(data,colName,rowNum,instNum) {if($u.s.aTrim(data) == '') return 'Value is required';if(RegExp('.*[ \t\v\f\n\r].*').test(data)) return 'Must Be A Valid Email Address';if(data=='') return false;if(!RegExp('\\b[A-Z0-9a-z._%-]+@[A-Z0-9a-z._%-]+\\.[A-Za-z]{2,4}\\b').test(data)) return 'Must Be A Valid Email Address'; return true; }  },'PASSWORD1': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C', validate: function(data,colName,rowNum,instNum) {if($u.s.aTrim(data) == '') return 'Value is required';if(RegExp('.*[ \t\v\f\n\r].*').test(data)) return 'Value cannot contain whitespace.'; return true; }  },'PASSWORD2': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C', validate: function(data,colName,rowNum,instNum) {if($u.s.aTrim(data) == '') return 'Value is required';if(RegExp('.*[ \t\v\f\n\r].*').test(data)) return 'Value cannot contain whitespace.'; return true; }  },'USERROLES': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  },'USERGUI': {info: {controlType: 'Textbox'}, hiddenVal: false, type: 'input,label', isCalc: false, hlp: '', isArray: false, dataType: 'C'  }},
 	originalValues: [{
+	"HOLDLOGINVALUE": "",
+	"USERNAME": "",
+	"PASSWORD": "",
+	"VERSION": "2.0.7",
+	"USERNAME1": "",
+	"PASSWORD1": "",
+	"PASSWORD2": "",
+	"USERROLES": "",
+	"USERGUI": ""
 }],
 	defaultValues: {
+	"HOLDLOGINVALUE": "",
+	"USERNAME": "",
+	"PASSWORD": "",
+	"VERSION": "2.0.7",
+	"USERNAME1": "",
+	"PASSWORD1": "",
+	"PASSWORD2": "",
+	"USERROLES": "",
+	"USERGUI": ""
 },
 	datePickerMonthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
 	datePickerDayNames: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
@@ -359,14 +669,14 @@ var DLG1_DlgObj = new A5.DialogComponentHelper('DLG1',{
 	datePickerFirstDayOfWeek: 1,
 	resetFormMessage: 'Are you sure you want to reset the form?',
 	resetFormTitle: 'Warning',
-	resetFormIcon: 'svgIcon=#alpha-icon-questionCircle:icon',
+	resetFormIcon: 'cssIcon=iOS7Icon iOS7IconHelp',
 	dirtyFormMessage: 'You must first save your changes or cancel changes by clicking the Reset button.',
 	dirtyFormTitle: 'Notice',
-	dirtyFormIcon: 'svgIcon=#alpha-icon-infoCircle:icon',
+	dirtyFormIcon: 'cssIcon=iOS7Icon iOS7IconInfo',
 	deleteRecordDialogTitle: 'Delete Record',
 	deleteRecordDialogMessage: 'Are you sure you want to delete this record?',	
 	ssDateFormat: 'MM/dd/yyyy',
-	styleName: 'Alpha',
+	styleName: 'iOS7',
 	_fieldHelpers_DIALOG2: [],
 	parentComponentAlias: '',
 	submitIfHasClientSideErrors: true, 
@@ -378,20 +688,77 @@ var DLG1_DlgObj = new A5.DialogComponentHelper('DLG1',{
 	fieldErrors: {
 		type: 'block', 
 		className: 'errorText',
-		inputClassName: 'editError',
+		inputClassName: 'iOS7EditError',
 		edit: { 
-			container: { className: 'editError'}
+			container: { className: 'iOS7EditBGError'}
 		},
-		icon: 'svgIcon=#alpha-icon-exclamationCircle:icon',
+		icon: 'cssIcon=iOS7Icon iOS7IconError',
 		global: {
 			contId: 'DLG1.GLOBALERRORS',
 			hoverClassName: 'errorTextHighlight',
 			hoverInputClassName: 'errorInputHighlight'
 		}
 	},
+		afterValidate: function(e) {
+DLG1_DlgObj.runAction('Ajax Callback Create New User');
+DLG1_DlgObj.runAction('Email New Registration Welcome Email');
+window.alert('Thank You For Registering!  Enjoy Using Pet Video Verify!  Now Watch The User Training Videos To Learn To Use The App!!!');
+DLG1_DlgObj.resetForm(false);
+		},
+		onRenderComplete: function(e) {
+var lsUserId = localStorage.getItem("ls_UserId");
+if (lsUserId){
+DLG1_DlgObj.setValue('UserName',lsUserId)
+}
+		},
 		onOrientationChange: function(e) {
 var pObj = DLG1_DlgObj.getPanelObject();
 if(pObj) pObj.resize();
+if(DLG1_DlgObj._functions._resizePanels) DLG1_DlgObj._functions._resizePanels();
+		},
+		onPhoneGapReady: function(e) {
+if (typeof StatusBar == 'object') {
+ var obj = DLG1_DlgObj._iPhoneXSettings;
+ if(obj) {
+  StatusBar.overlaysWebView(obj.pOverlaysWebView);
+  switch(obj.pStyle) {
+   case "LightContent":
+    StatusBar.styleLightContent();
+    break;
+   case "BlackTranslucent":
+    StatusBar.styleBlackTranslucent();
+    break;
+   case "BlackOpaque":
+    StatusBar.styleBlackOpaque();
+    break;
+   default:
+    StatusBar.styleDefault();
+  }
+  if (obj.pOverlaysWebView == false) {
+   StatusBar.backgroundColorByHexString(obj.pBackgroundColor);
+  }
+  obj.pHideStatusBar == true ? StatusBar.hide():StatusBar.show();
+  if(DLG1_DlgObj._functions._resizePanels) DLG1_DlgObj._functions._resizePanels();
+ }
+};
+function resizePanel() {
+    setTimeout(function() {
+ const pObj = DLG1_DlgObj.getPanelObject();
+ pObj.resize();
+    },25);
+}
+		},
+		afterLogin: function(e) {
+var ls = supports_html5_storage();
+if (ls){
+var lsUserId = DLG1_DlgObj.getValue('UserName');
+localStorage.setItem("ls_UserId",lsUserId);
+} else {
+}
+DLG1_DlgObj.runAction('Call Main Panel');
+		},
+		afterLogout: function(e) {
+DLG1_DlgObj.panelSetActive('PANEL_LOGIN');
 		},
 		_onWindowResize: function(e) {
 var arr = DLG1_DlgObj._listControls;
@@ -412,40 +779,293 @@ DLG1_DlgObj._findActiveLayoutRule();
 A5.__componentObj = DLG1_DlgObj;
 A5.map._fn='https://maps.googleapis.com/maps/api/js?key=&libraries=geometry,places&callback=A5.map.init';
 DLG1_DlgObj._tabObjects = [];
-A5.loadJavascript('\n;\n\n\n\n;\n');
+A5.loadJavascript('DLG1_DlgObj._functions._resizePanels = function() {\n\tsetTimeout(function() {\n\t\tconst pObj = DLG1_DlgObj.getPanelObject();\n\t\tpObj.resize();\n\t},100);\n};\n\nfunction supports_html5_storage() {\ntry {\nreturn \'localStorage\' in window && window[\'localStorage\'] !== null;\n} catch (e) {\nreturn false;\n}\n}\n;\n\n\n\n;\n',true);
+DLG1_DlgObj._functions.runAction_a1ed70e3_f289_42ce_8b23_751047241eed = function() {
+	var onCompleteCode = 'var pObj = DLG1_DlgObj.getParentObject(\'HoldLoginValue\');\nvar HoldLoginValue = pObj.stateInfo[\'HoldLoginValue\'];\nDLG1_DlgObj.setValue(\'HoldLoginValue\',HoldLoginValue);';
+	var callbackId = A5.UUID();
+	var objx = DLG1_DlgObj._ajaxCallbackCompleteCode;
+	if(typeof objx == 'undefined') objx = {};
+	objx[callbackId] = Function(onCompleteCode);
+	var go = new Object();
+		go.dialog2Name = 'pvvmobileapp';
+	go.type = 'dialog2';
+	go.alias = 'DLG1_PVVMOBILEA_102926WWAE';
+	go.workingMessage = '<img src="css/A5System/Images/wait.gif" /> Working...';
+	go.flagTimer = 'F';
+	go.flagQueryEcho = 'F';
+	go.flagDebugMode = 'F';
+	go.userFilter = '';
+	go.baseFilter = '';
+	go.userOrder = '';
+	go.overrideSettings = 'style_name=`iOS7`'+'||';
+	go.arguments = 'argPETID|Numeric| ||argMEDID|Numeric| ||argLIST|Numeric| ||argFOUNDID|Numeric| ||ARGHOLDLOGINVALUE|Numeric|';
+//embedded objects on a ux can be refreshed or reloaded. the function that renders the embedded object can be 
+//called with an optional argument (true=reload). defaults to false, which does a refresh (on a grid)
+var flagReload = false;
+if(typeof arguments[0] != 'undefined' && arguments[0] == true) {
+	flagReload = true
+}
+if (flagReload) go.__useCachedGrid = false;
+else go.__useCachedGrid = true;
+	go.localArguments = '';
+	go.linkDefinition = '';
+	go.placeHolderValues = '';
+	go.parameterBucket = $gvs('DLG1.PARAMETERBUCKET');
+	go.argumentValueBucket = $gvs('DLG1.ARGUMENTVALUES');
+	go.a5_default_path = 'C_colon_|A5Webroot|livepreview';
+	go.onLoadCompleteJavascript = 'run:'+callbackId;
+	go._runningInMobilePreview = DLG1_DlgObj._mobilePreview;
+	if(typeof tbiObj != 'undefined' && typeof tbiObj._workingPreviewHost != 'undefined') { 
+		go._workingPreviewHost = tbiObj._workingPreviewHost;
+	}
+	if(typeof DLG1_DlgObj.gridId != 'undefined') go._thisGridAlias = DLG1_DlgObj.gridId;
+	if(typeof DLG1_DlgObj.dialogId != 'undefined') go._thisGridAlias = DLG1_DlgObj.dialogId;
+	//debugger;
+	var po = window[go._thisGridAlias + '_DlgObj'];
+	if(po) { 
+		if(typeof po._embeddedUX == 'undefined') po._embeddedUX = [];
+		po._embeddedUX.push(go.alias);
+		//alert(po._embeddedUX);
+	}
+	var panelCardId = DLG1_DlgObj.panelGetId('PANEL_APPLICATION','body');
+if($(panelCardId + '.SCROLLWRAPPER')) panelCardId = panelCardId + '.SCROLLWRAPPER';
+go.dialog2Div = panelCardId;
+	A5.component.runGenericComponent(go);
+}
+DLG1_DlgObj._controlsThatHaveHiddenProperty = ['HoldLoginValue','Version','UserRoles','UserGui']
+if(!DLG1_DlgObj.fieldHelpers['USERNAME'])DLG1_DlgObj.fieldHelpers['USERNAME'] = new A5.Edit({
+	watermark: {
+		text: 'User Email'
+	}
+});
+if(!DLG1_DlgObj.fieldHelpers['PASSWORD'])DLG1_DlgObj.fieldHelpers['PASSWORD'] = new A5.Edit({
+	watermark: {
+		text: 'Password'
+	}
+});
+if(!DLG1_DlgObj.fieldHelpers['USERNAME1'])DLG1_DlgObj.fieldHelpers['USERNAME1'] = new A5.Edit({
+	watermark: {
+		text: 'User Email'
+	}
+});
+if(!DLG1_DlgObj.fieldHelpers['PASSWORD1'])DLG1_DlgObj.fieldHelpers['PASSWORD1'] = new A5.Edit({
+	watermark: {
+		text: 'Password'
+	}
+});
+if(!DLG1_DlgObj.fieldHelpers['PASSWORD2'])DLG1_DlgObj.fieldHelpers['PASSWORD2'] = new A5.Edit({
+	watermark: {
+		text: 'Confirm Password'
+	}
+});
 DLG1_DlgObj.lookups = {
 };
+DLG1_DlgObj.dialogWatches['SHOWHIDE_LOGOUT_BUTTON'] = {
+		watch: [],
+		variables: [],
+		onChange: function(data) {
+	var dialog = {};
+	var summary = {};
+	DLG1_DlgObj._getDialogVariables(dialog,summary,data);
+	var showHide = '';
+	if( (dialog.isLoggedIn == true) == true ) showHide = '';
+	else showHide = 'none';	
+	if(showHide == 'none') {	
+		DLG1_DlgObj.setControlDisplay(''+'LOGOUT_BUTTON'+'',false,'display');
+	} else {
+		DLG1_DlgObj.setControlDisplay(''+'LOGOUT_BUTTON'+'',true,'display');
+	}
+	;
+	DLG1_DlgObj._executeEvent('onWatchEvent',{type: 'show/hide', control: 'LOGOUT_BUTTON', flag: $if(showHide == '',true,false)});}
+}
+DLG1_DlgObj.dialogWatches['ENABLE_BUTTON_SUBMIT'] = {
+		watch: [],
+		variables: [],
+		onChange: function(data) {
+	var dialog = {};
+	var summary = {};
+	DLG1_DlgObj._getDialogVariables(dialog,summary,data);
+	var enable = (dialog.isDirty == true);
+	var eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_SUBMIT'),$('DLG1.R'+data.rowNumber));
+	if(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('DLG1.'+'V.R' + data.rowNumber + '.BUTTON_SUBMIT')];
+	var pObj = DLG1_DlgObj.getControl('BUTTON_SUBMIT'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }
+	if(typeof DLG1_DlgObj._buttons['BUTTON_SUBMIT'] != 'undefined') {
+	DLG1_DlgObj._buttons['BUTTON_SUBMIT'].setDisabled(!enable,eles)
+	} else {
+	for(var i=0; i<eles.length;i++) eles[i].disabled = !enable;
+	}
+	;;
+	DLG1_DlgObj._executeEvent('onWatchEvent',{type: 'enable', control: 'BUTTON_SUBMIT', flag: enable});}
+}
+DLG1_DlgObj.dialogWatches['ENABLE_BUTTON_RESET'] = {
+		watch: [],
+		variables: [],
+		onChange: function(data) {
+	var dialog = {};
+	var summary = {};
+	DLG1_DlgObj._getDialogVariables(dialog,summary,data);
+	var enable = (dialog.isDirty == true);
+	var eles = $cetp($n('V.R' + data.rowNumber + '.BUTTON_RESET'),$('DLG1.R'+data.rowNumber));
+	if(typeof eles.length == 'undefined' || eles.length == 0) eles = [$('DLG1.'+'V.R' + data.rowNumber + '.BUTTON_RESET')];
+	var pObj = DLG1_DlgObj.getControl('BUTTON_RESET'); if(pObj) { if(typeof pObj.setDisabled != 'undefined') {  pObj.setDisabled(!enable,eles); return true;  } }
+	if(typeof DLG1_DlgObj._buttons['BUTTON_RESET'] != 'undefined') {
+	DLG1_DlgObj._buttons['BUTTON_RESET'].setDisabled(!enable,eles)
+	} else {
+	for(var i=0; i<eles.length;i++) eles[i].disabled = !enable;
+	}
+	;;
+	DLG1_DlgObj._executeEvent('onWatchEvent',{type: 'enable', control: 'BUTTON_RESET', flag: enable});}
+}
 DLG1_DlgObj.setStateInfo({
-	"__dialogGuid": "83491482-7bc2-47ba-bc5c-fe32796bcec6",
+	"__dialogGuid": "a067cc25-810d-4471-8d0c-d09016dd90ad",
 	"argumentsBoundToCotrols": "",
-	"__sgr": "",
 	"__dtfmt": "MM/dd/yyyy",
-	"__tfmt": ""
+	"__tfmt": "",
+	"__sgr": ""
 });//ssi3;
 DLG1_DlgObj._cascadingControls = [];
 DLG1_DlgObj._cascadingControlsChildren = [];
-A5.msgBox.theme = 'Alpha';
+A5.msgBox.theme = 'iOS7';
 A5.msgBox.buttonWidth = '1in';
 DLG1_DlgObj._defaultWindowTitleDirection = 'ltr';
 DLG1_DlgObj._controlContainers = {}
 DLG1_DlgObj._panelCardControls = {
+HOLDLOGINVALUE:'PANEL_LOGIN',
+USERNAME:'PANEL_LOGIN',
+PASSWORD:'PANEL_LOGIN',
+VERSION:'PANEL_LOGIN',
+USERNAME1:'USER_REGISTRATION',
+PASSWORD1:'USER_REGISTRATION',
+PASSWORD2:'USER_REGISTRATION',
+USERROLES:'USER_REGISTRATION',
+USERGUI:'USER_REGISTRATION'
 }
 DLG1_DlgObj._controlsOnPanel = {
+	'PANEL_LOGIN' : {controls: ['HOLDLOGINVALUE','USERNAME','PASSWORD','VERSION']},
+	'USER_REGISTRATION' : {controls: ['USERNAME1','PASSWORD1','PASSWORD2','USERROLES','USERGUI']}
 }
 DLG1_DlgObj._buttons = {};
-DLG1_DlgObj._buttons['BUTTON_1'] = new A5.Button({
+DLG1_DlgObj._buttons['LOGIN_BUTTON'] = new A5.Button({
 	layout: 'text',
-	style: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',
-	html: 'Got Here',
+	style: 'width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ',
+	html: 'Login',
 	onClick: function() { 
 },
-	theme: 'Alpha'
+	theme: 'iOS7'
 });
-DLG1_DlgObj._buttons['BUTTON_1'].bind('DLG1.V.R1.BUTTON_1');
-DLG1_DlgObj._buttons['BUTTON_1'].bind('DLG1.V.R1.BUTTON_1');
+DLG1_DlgObj._buttons['LOGOUT_BUTTON'] = new A5.Button({
+	layout: 'text',
+	style: 'width: 100%; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ',
+	html: 'Logout',
+	onClick: function() { 
+},
+	theme: 'iOS7'
+});
+DLG1_DlgObj._buttons['BUTTON_SUBMIT'] = new A5.Button({
+	layout: 'icon text',
+	style: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',
+	tip: 'Submit the form.',
+	html: 'Submit',
+	icon: 'cssIcon=iOS7Icon iOS7IconSave',
+	disabledIcon: 'cssIcon=iOS7Icon iOS7IconDisabled iOS7IconSave',
+	onClick: function() { 
+},
+	theme: 'iOS7'
+});
+DLG1_DlgObj._buttons['BUTTON_RESET'] = new A5.Button({
+	layout: 'icon text',
+	style: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',
+	tip: 'Reset the value of all controls in the form.',
+	html: 'Reset',
+	icon: 'cssIcon=iOS7Icon iOS7IconUndo',
+	disabledIcon: 'cssIcon=iOS7Icon iOS7IconDisabled iOS7IconUndo',
+	onClick: function() { 
+},
+	theme: 'iOS7'
+});
+DLG1_DlgObj._buttons['BUTTON_5'] = new A5.Button({
+	layout: 'text',
+	style: 'width: 100%; height: 37px; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; ',
+	html: 'Back',
+	onClick: function() { 
+},
+	theme: 'iOS7'
+});
+DLG1_DlgObj._buttons['BUTTON_7'] = new A5.Button({
+	layout: 'text',
+	style: 'box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box;',
+	html: 'Back To Login',
+	onClick: function() { 
+},
+	theme: 'iOS7'
+});
+DLG1_DlgObj._buttons['LOGIN_BUTTON'].bind('DLG1.V.R1.LOGIN_BUTTON');
+DLG1_DlgObj._buttons['LOGOUT_BUTTON'].bind('DLG1.V.R1.LOGOUT_BUTTON');
+DLG1_DlgObj._buttons['BUTTON_SUBMIT'].bind('DLG1.V.R1.BUTTON_SUBMIT');
+DLG1_DlgObj._buttons['BUTTON_RESET'].bind('DLG1.V.R1.BUTTON_RESET');
+DLG1_DlgObj._buttons['BUTTON_5'].bind('DLG1.V.R1.BUTTON_5');
+DLG1_DlgObj._buttons['BUTTON_7'].bind('DLG1.V.R1.BUTTON_7');
+DLG1_DlgObj._buttons['LOGIN_BUTTON'].bind('DLG1.V.R1.LOGIN_BUTTON');
+DLG1_DlgObj._buttons['LOGOUT_BUTTON'].bind('DLG1.V.R1.LOGOUT_BUTTON');
+DLG1_DlgObj._buttons['BUTTON_SUBMIT'].bind('DLG1.V.R1.BUTTON_SUBMIT');
+DLG1_DlgObj._buttons['BUTTON_RESET'].bind('DLG1.V.R1.BUTTON_RESET');
+DLG1_DlgObj._buttons['BUTTON_5'].bind('DLG1.V.R1.BUTTON_5');
+DLG1_DlgObj._buttons['BUTTON_7'].bind('DLG1.V.R1.BUTTON_7');
 DLG1_DlgObj.setVariables({});
-DLG1_DlgObj._dataBoundControls = [];
-DLG1_DlgObj._primaryTableAlias = '';
+DLG1_DlgObj._dataBoundControls = ['USERNAME1'];
+DLG1_DlgObj._primaryTableAlias = 'PVV_OWNER_INFO';
+DLG1_DlgObj._actions = {};
+DLG1_DlgObj._actions['Embed UX'] = 'DLG1_ACTION_EmbedUX(1,\'1\',this);';
+DLG1_DlgObj._actions['Call Main Panel'] = '/* actionJavascript:d093a499-3a52-4340-827c-b021cd22e79a */\nDLG1_DlgObj.panelSetActive(\'PANEL_APPLICATION\',true);';
+DLG1_DlgObj._actions['Ajax Callback Create New User'] = '/* actionJavascript:c08f16e4-2ad7-4a4e-87e8-15f1522c5e21 */\nDLG1_DlgObj.ajaxCallback(\'\',\'\',\'newUSER\',\'\',\'\',{deviceOfflineFunction: function() {   }});';
+DLG1_DlgObj._actions['Email New Registration Welcome Email'] = 'DLG1_ACTION_EmailNewRegistrationWelcomeEmail(1,\'1\',this);';
+DLG1_DlgObj._actions['Submit Message Box'] = '/* actionJavascript:36691bbe-0266-4352-a43d-b65560094480   */\nA5.msgBox.show(\'<strong>Confirm Registration Information!!!</strong>\',\'<div style="height: 1in; padding: 15pt;"><strong>Is Registration Information Correct?</strong></div>\',[{name: \'ok\', html: \'OK\', value: \'ok\'},{name: \'cancel\', html: \'Cancel\', value: \'cancel\'}],function(button) {if(button == \'ok\') {\nsetTimeout(function() {DLG1_DlgObj.submit();\nDLG1_DlgObj.panelSetActive(\'PANEL_LOGIN\',true);},10)\n}\nif(button == \'cancel\') {\nsetTimeout(function() {},10)\n}\n});';
+DLG1_DlgObj._actions['Resize'] = 'setTimeout(function() { \nvar obj = DLG1_DlgObj.getPanelObject(\'PANELLAYOUT_1\')\nobj.resize();\n},100);';
+;
+window['DLG1_ACTION_EmbedUX'] = function(rowNum,rowId,objEle) {
+var runMethod = 'ajax';
+if(runMethod == 'ajax') {
+if(typeof DLG1_DlgObj._onlineStatus != 'undefined') { 
+	if(DLG1_DlgObj._onlineStatus == 'offline') { 
+		( function() {  }() );
+		DLG1_DlgObj._executeEvent('onAjaxCallbackNotAvailable', {xbasicFunctionName: '', ajaxEvent: 'OpenComponent'})
+		return false;
+	}
+}		
+};
+$('panelId').innerHTML = '<div style=\'\'  id=\'GRIDDIV_panelId\'></div>'; 
+var go = new Object();
+go.ajaxFailedMessage = '';
+go.ajaxCallbackTimeout = DLG1_DlgObj.ajaxCallbackTimeout;
+go.objectId = objEle.id;
+go.dialog2Name = 'pvvmobileapp';
+go.type = 'dialog2';
+go.alias = 'DLG1_PVVMOBILEA_SMBP';
+go.submitCurrentFieldValues = true;
+go.sourceGridPart = 'O';
+go.sourceGridRowNumber = '1';
+go.workingMessage = '<img src=\'css/A5System/Images/wait.gif\' />Working...';
+go.placeholderValues = '';
+go.argumentBinding = '';
+go._thisGridAlias = DLG1_DlgObj.gridId;
+if(typeof DLG1_DlgObj.gridId != 'undefined') go._thisGridAlias = DLG1_DlgObj.gridId;
+if(typeof DLG1_DlgObj.dialogId != 'undefined') {
+	go._thisGridAlias = DLG1_DlgObj.dialogId;
+}
+go._thisGridGUID = DLG1_DlgObj.componentGUID;
+go._gridCurrentFilter = DLG1_DlgObj._gridFilter;
+go._gridCurrentOrder = DLG1_DlgObj._gridOrder;
+go._gridCurrentArguments = DLG1_DlgObj._gridArguments;
+go._gridCurrentDBType = DLG1_DlgObj._gridDBType;
+go.overrideSettings = 'Style_name = `iOS7`||Style_name = `iOS7`'+'||';
+go.a5_default_path = 'C_colon_|A5Webroot|livepreview';
+var panelId = DLG1_DlgObj.panelGetId('PANEL_APPLICATION','body');
+go.dialog2Div = panelId;
+A5.component.runGenericComponent(go)
+}
+window['DLG1_ACTION_EmailNewRegistrationWelcomeEmail'] = function(rowNum,rowId,objEle) {
+DLG1_DlgObj.ajaxCallback('O',1,'__a5SystemSendEmail','','_getData=true&__metaDataFunction=sendEmail_e2f71b09_5064_43a5_bc02_ad0d004c2d1f&_part=O');
+}
 DLG1_DlgObj._hasPanels = true;
 DLG1_DlgObj._hasOnSynchronizeEvent = false;
 A5.__dtfmt = 'MM/dd/yyyy';A5.__tfmt = '';
@@ -10792,24 +11412,30 @@ if (!String.prototype.format) {
 // End module pattern
 })(window, document);;
 RGraph.SVG.tooltips.style.zIndex     = '10000';
+DLG1_DlgObj._embeddedUXComponents = {
+}
+DLG1_DlgObj._loginErrorPH = 'LOGIN_ERRORS';
 DLG1_DlgObj._layoutMode = 'containerwidth';
 DLG1_DlgObj._responsiveRulesMode = 'firsttrue';
 DLG1_DlgObj.__controlNesting = {
+PANELHEADER_1: [],
+PANELHEADER_2: [],
+CONTAINER_1: []
 }
 DLG1_DlgObj._listsDV = [];
 DLG1_DlgObj._listControls = [];
 DLG1_DlgObj._formBoxControls = [];
-DLG1_DlgObj._localStorageSettings = {namespace: 'ALPHA_834914827bc247babc5cfe32796bcec6',friendlyName: '',description: '',persistVariableValues: false,__version: 1,persistComponentState: false,workingPreviewTestingFolder: '',restore: {variables: false,data: false,state: false},compressData: false,minify: false,variablesToNotPersist: '',workingPreviewTestingMode: 'Browser',compressListData: false}
+DLG1_DlgObj._localStorageSettings = {namespace: 'ALPHA_a067cc25810d44718d0cd09016dd90ad',friendlyName: '',description: '',persistVariableValues: false,__version: 1,persistComponentState: false,workingPreviewTestingFolder: '',restore: {variables: false,data: false,state: false},minify: false,variablesToNotPersist: '',compressData: false,workingPreviewTestingMode: 'Browser',compressListData: false}
 ;
 DLG1_DlgObj.__r = [];
 DLG1_DlgObj.__flagIsStaticHTML = true; DLG1_DlgObj._staticHTMLMode = true; 
 DLG1_DlgObj._EDITOR_EDITORSET = {};
-DLG1_DlgObj.styleName = 'Alpha';
-DLG1_DlgObj.styleVersion = 4
+DLG1_DlgObj.styleName = 'iOS7';
+DLG1_DlgObj.styleVersion = 3
 DLG1_DlgObj.framesInfo = {
 };
 DLG1_DlgObj._beforePrepare = function(e) { ;if(DLG1_DlgObj.styleVersion < 3) {
-	A5.themes.add('Alpha', {edit: {base: { className: 'AlphaEdit', errorClassName: 'AlphaEditError', watermark: {className: 'AlphaEditWatermark'}}}});
+	A5.themes.add('iOS7', {edit: {base: { className: 'iOS7Edit', errorClassName: 'iOS7EditError', watermark: {className: 'iOS7EditWatermark'}}}});
 }
 };
 DLG1_DlgObj._noPersist = []
@@ -10818,8 +11444,22 @@ $u.decimal = '.';
 $u.comma = ',';
 DLG1_DlgObj._mobilePreview = false;
 DLG1_DlgObj._modernFrames = {};
+DLG1_DlgObj._iPhoneXSettings = {
+	"pOverlaysWebView": true,
+	"pHideStatusBar": false,
+	"pStyle": "Default",
+	"pBackgroundColor": ""
+}
 DLG1_DlgObj._listsWithDependentTFControls = DLG1_DlgObj._listsWithDependentTFControls = {}
 DLG1_DlgObj.__r = [];
+DLG1_DlgObj._embeddedObjects = {
+	'5c96ae9c634e4106baff8604fa734ee9' : {guid: 'a1ed70e3_f289_42ce_8b23_751047241eed'}
+}
+var ele2 = $('DLG1.R1'); if(ele2) {
+var ele = document.createElement('div');
+ele.innerHTML = '\n<div style="display:none;"><span><input\ttype="text" id="DLG1.V.R1.HOLDLOGINVALUE" title=""  autocapitalize="off"  autocorrect="off"     class="[class.dialogInput] " style="text-align: right; "    name="V.R1.HOLDLOGINVALUE"    value=""    />\n</span>\n<span><input\ttype="text" id="DLG1.V.R1.VERSION" title=""     class="[theme:edit.base.className|class.dialogInput] " style=""    name="V.R1.VERSION"    value=""    />\n</span>\n</div>\n<div style="display:none;"><span><input\ttype="text" id="DLG1.V.R1.USERROLES" title=""     class="[class.dialogInput] " style=""    name="V.R1.USERROLES"    value=""    />\n</span>\n<span><input\ttype="text" id="DLG1.V.R1.USERGUI" title=""     class="[class.dialogInput] " style=""    name="V.R1.USERGUI"    value=""    />\n</span>\n</div>\n\n';
+ele2.appendChild(ele);
+};
 window.__preventDefault = function(event) { event.preventDefault()};
 setTimeout(function() {; },100);
 DLG1_DlgObj.__flagIsStaticHTML = true; DLG1_DlgObj._staticHTMLMode = true; 
@@ -10828,13 +11468,82 @@ DLG1_DlgObj._listInsideCards = {
 ;DLG1_DlgObj.__workingPreviewProject = 'C:/Users/cjmar/Documents/AlphaAnywhere/AppFlow/AppFlow.WebProjects/Default.WebProject';
 var ele = DLG1_DlgObj.getPointer('CONTAINER_FORGOTPASSWORDLINK'); if(ele) ele.style.display = 'none';
 DLG1_DlgObj.__serverVersion = '7987-5623';
-DLG1_DlgObj.__guid = '83491482-7bc2-47ba-bc5c-fe32796bcec6';
+DLG1_DlgObj._afterLogin = {target: 'Page', pageName: ''};
+DLG1_DlgObj.__guid = 'a067cc25-810d-4471-8d0c-d09016dd90ad';
 ;
 ;
+DLG1_DlgObj.applyServerSideRules(3);
 
-$e.add('DLG1.V.R1.BUTTON_1',A5.d.evnts.click,function(e) {
-var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {alert('Got Here Today 12-21-2021'); } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
-},this,false,'DLG1.V.R1.BUTTON_1');
+$e.add('DLG1.V.R1.LOGIN_BUTTON',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {DLG1_DlgObj.login() } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.LOGIN_BUTTON');
+
+$e.add('DLG1.V.R1.LOGOUT_BUTTON',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {DLG1_DlgObj.logout(); } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.LOGOUT_BUTTON');
+
+
+$e.add('DLG1.V.R1.HYPERLINK_1',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {if (!this.disabled) {
+DLG1_DlgObj.panelSetActive('USER_REGISTRATION',true);} } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.HYPERLINK_1');
+
+$e.add('DLG1.V.R1.HYPERLINK_2',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {if (!this.disabled) {
+DLG1_DlgObj.panelSetActive('RECOVERPASSWORD',true);} } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.HYPERLINK_2');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$e.add('DLG1.V.R1.BUTTON_SUBMIT',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {var controlsToValidate = ['USERNAME1', 'PASSWORD1', 'PASSWORD2'];
+var flagHasError = false;
+
+for(var i=0; i<controlsToValidate.length;i++){
+	var result = DLG1_DlgObj.clientSideValidateField(controlsToValidate[i],1);
+	if(result != undefined){
+		if(typeof result != 'boolean'){
+			if(typeof result == 'string'){
+				if(result != "") flagHasError = true;
+			}
+		}
+	}else{
+		flagHasError = true;
+	}
+}
+
+if(!flagHasError){
+	DLG1_DlgObj.runAction('Submit Message Box');	
+} } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.BUTTON_SUBMIT');
+
+$e.add('DLG1.V.R1.BUTTON_RESET',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {DLG1_DlgObj.resetForm(); } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.BUTTON_RESET');
+
+$e.add('DLG1.V.R1.BUTTON_5',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {DLG1_DlgObj.panelSetActive('PANEL_LOGIN',true); } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.BUTTON_5');
+
+
+
+
+
+$e.add('DLG1.V.R1.BUTTON_7',A5.d.evnts.click,function(e) {
+var _disabled = this.disabled; if(typeof _disabled == 'undefined') _disabled = false; if(!_disabled) {;var flagLocked = false; if (typeof this._locked != 'undefined') flagLocked = this._locked;  if(!flagLocked) {DLG1_DlgObj.panelSetActive('PANEL_LOGIN',true); } ; this._locked = true; flagLocked = true; var that = this; setTimeout(function() { that._locked = false; },300);}
+},this,false,'DLG1.V.R1.BUTTON_7');
 
 DLG1_DlgObj.prepare();DLG1_DlgObj.populate(DLG1_DlgObj.originalValues[0]);
 DLG1_DlgObj._fireWatches(1);
@@ -10878,7 +11587,7 @@ DLG1_DlgObj.initialized = true;
 
 
 
-;DLG1_DlgObj.setStateInfo({ 	argValuesENC: 'y9grIeIBGN4=', 	__debugInfo: 'ssi-6014' });//ssi-6014;
+DLG1_DlgObj._functions.runAction_a1ed70e3_f289_42ce_8b23_751047241eed = function() { var obj = $(DLG1_DlgObj.dialogId + '_DIVCONTAINER_'+'a1ed70e3_f289_42ce_8b23_751047241eed'); if(obj) obj.innerHTML = '';};DLG1_DlgObj.setStateInfo({ 	argValuesENC: 'y9grIeIBGN4=', 	__debugInfo: 'ssi-6014' });//ssi-6014;
 ;
 
 
