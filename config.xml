@@ -158,23 +158,7 @@
 		<allow-navigation href="*" />
 	</platform>
 	<!-- end cordova-plugin-wkwebview-engine support -->
-	<platform name="ios" />
-	<plugin name="cordova-plugin-camera" source="npm" version="4.1.0" />
-	<!-- cordova-plugin-camera support -->
-		<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
-  		  	<string>This app requires camera access to take photos.</string>
-		</edit-config>
-		<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
- 		   <string>This app requires photo library access to access and display photo library pictures.</string>
-		</edit-config>
-		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-		    <string>This app requires access to your location for recording location based information.</string>
-		</edit-config>
-		<edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
-		    <string>This app requires photo library write access to save pictures in the photo library.</string>
-		</edit-config>
-	<!-- end cordova-plugin-camera support -->
-	<plugin name="cordova-plugin-file" source="npm" version="4.3.3" />
+	<platform name="ios" />	<plugin name="cordova-plugin-file" source="npm" version="4.3.3" />
 	<plugin name="cordova-plugin-geolocation" source="npm" version="4.0.2" />
 	<!-- cordova-plugin-geolocation support -->
 		<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">

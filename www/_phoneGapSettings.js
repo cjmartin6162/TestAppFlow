@@ -52,7 +52,6 @@ function _phoneGapSettings() {
         "cordova-plugin-splashscreen": "npm",
         "cordova-plugin-whitelist": "npm",
         "cordova-plugin-alpha-wkwebview-file-xhr": "git",
-        "cordova-plugin-camera": "npm",
         "cordova-plugin-file": "npm",
         "cordova-plugin-geolocation": "npm",
         "cordova-plugin-globalization": "npm",
